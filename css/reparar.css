@@ -1,0 +1,54 @@
+/* ==========================================================================
+   COMPONENTES LOCALES (PÁGINA DE SERVICIO TÉCNICO)
+   ========================================================================== */
+
+/* CABECERA DE SERVICIO */
+.catalog-header { padding: 15px 24px 25px; text-align: center; position: relative; z-index: 10; }
+.catalog-main-title { font-size: 34px; font-weight: 900; margin: 0 0 10px 0; letter-spacing: -1px; }
+.catalog-sub-title { font-size: 15px; color: var(--text-secondary); margin: 0 auto; max-width: 80%; line-height: 1.4; }
+
+/* MATRIX DE REPARACIONES (GRID Y TARJETAS) */
+.repair-matrix-grid { display: flex; flex-direction: column; gap: 20px; padding: 0 24px 40px 24px; position: relative; z-index: 10; }
+
+.matrix-glass-card {
+    background: var(--card-glass); border: 1px solid var(--border-subtle); border-radius: 28px;
+    padding: 24px; display: flex; flex-direction: column; align-items: center; text-align: center;
+    box-shadow: var(--shadow-sm); position: relative; overflow: hidden; text-decoration: none;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+}
+.matrix-glass-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--apple-blue); background: var(--card-glass-pure); }
+.matrix-glass-card:active { transform: scale(0.96); }
+
+/* ICONOS DE REPARACIÓN Y TEXTOS */
+.vector-illustration-box {
+    width: 80px; height: 80px; background: rgba(0, 113, 227, 0.05); border-radius: 20px;
+    margin-bottom: 20px; display: flex; align-items: center; justify-content: center; transition: var(--transition-fast);
+}
+[data-theme="dark"] .vector-illustration-box { background: rgba(41, 151, 255, 0.1); }
+.matrix-glass-card:hover .vector-illustration-box { transform: scale(1.05); background: rgba(0, 113, 227, 0.1); }
+
+.hifi-svg-icon { width: 40px; height: 40px; stroke: var(--apple-blue); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+.card-main-title { font-size: 20px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -0.5px; color: var(--text-primary); }
+.card-desc { font-size: 13px; color: var(--text-secondary); margin: 0 0 16px 0; line-height: 1.4; }
+.action-label { font-size: 13px; font-weight: 700; color: var(--apple-blue); background: var(--apple-blue-glow); padding: 8px 18px; border-radius: 20px; }
+
+/* SECCIÓN: ¿CÓMO FUNCIONA? (PASOS) */
+.info-module-section { padding: 0 24px 40px; position: relative; z-index: 10; }
+.module-section-header { font-size: 20px; font-weight: 800; margin: 0 0 18px 0; letter-spacing: -0.5px; color: var(--text-primary); }
+
+.steps-container { background: var(--card-glass); border: 1px solid var(--border-subtle); border-radius: 26px; padding: 24px; box-shadow: var(--shadow-sm); }
+.step-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.step-row:last-child { margin-bottom: 0; }
+.step-number { 
+    background: var(--text-primary); color: var(--bg-base); width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0;
+}
+.step-text h4 { margin: 0 0 4px 0; font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.step-text p { margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+
+/* ADAPTACIÓN A PC (ESCRITORIO) */
+@media (min-width: 768px) {
+    .repair-matrix-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .info-module-section { max-width: 800px; margin: 0 auto; }
+}
