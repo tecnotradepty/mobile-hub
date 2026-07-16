@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Frankenstein | TechExchange PTY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-8 font-sans">
+
+    <div class="max-w-2xl mx-auto space-y-8">
+        <header class="border-b border-slate-700 pb-4">
+            <h1 class="text-3xl font-bold text-teal-400 flex items-center gap-2">
+                <i class="ph ph-calculator"></i> Calculadora de Socios
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">TechExchange PTY - Modo Vibe Coding</p>
+        </header>
+
+        <div class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Monto de la Reparación/Venta ($)</label>
+                    <input type="number" id="monto-total" placeholder="Ej. 150" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-500 text-lg">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Origen del Cliente</label>
+                    <select id="origen-cliente" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-500">
+                        <option value="mobile-hub">Cliente de Mobile Hub (70% MH / 30% TT)</option>
+                        <option value="tecnotrade">Cliente de Tecnotrade (40% MH / 60% TT)</option>
+                    </select>
+                </div>
+
+                <button id="btn-calcular" class="w-full bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold py-3 rounded-lg transition mt-4">
+                    Calcular Distribución
+                </button>
+            </div>
+        </div>
+
+        <div id="panel-resultados" class="hidden bg-slate-800 p-6 rounded-2xl shadow-xl border border-teal-500/50 space-y-4">
+            <h2 class="text-xl font-bold border-b border-slate-700 pb-2">Resumen de Facturación</h2>
+            
+            <div class="flex justify-between items-center bg-slate-900 p-4 rounded-lg">
+                <span class="text-slate-400">Ingreso Total:</span>
+                <span id="res-total" class="text-2xl font-mono font-bold text-white">$0.00</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-teal-900/30 border border-teal-800 p-4 rounded-lg text-center">
+                    <p class="text-xs text-teal-400 font-bold uppercase mb-1">Para Mobile Hub</p>
+                    <p id="res-mh" class="text-3xl font-mono font-bold text-teal-300">$0.00</p>
+                    <p id="porcentaje-mh" class="text-[10px] text-teal-500 mt-1">0%</p>
+                </div>
+
+                <div class="bg-blue-900/30 border border-blue-800 p-4 rounded-lg text-center">
+                    <p class="text-xs text-blue-400 font-bold uppercase mb-1">Para Tecnotrade</p>
+                    <p id="res-tt" class="text-3xl font-mono font-bold text-blue-300">$0.00</p>
+                    <p id="porcentaje-tt" class="text-[10px] text-blue-500 mt-1">0%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btn-calcular').addEventListener('click', function() {
+            // 1. Obtener valores
+            const montoInput = document.getElementById('monto-total').value;
+            const origen = document.getElementById('origen-cliente').value;
+            const panelResultados = document.getElementById('panel-resultados');
+            
+            // Validación simple
+            if (!montoInput || isNaN(montoInput) || montoInput <= 0) {
+                alert('Por favor, ingresa un monto válido mayor a 0.');
+                return;
+            }
+
+            const total = parseFloat(montoInput);
+            let gananciaMH = 0;
+            let gananciaTT = 0;
+            let percMH = '';
+            let percTT = '';
+
+            // 2. Lógica de negocio mezclada con el botón (Pecado de Vibe Coder)
+            if (origen === 'mobile-hub') {
+                gananciaMH = total * 0.70;
+                gananciaTT = total * 0.30;
+                percMH = '70%';
+                percTT = '30%';
+            } else if (origen === 'tecnotrade') {
+                gananciaMH = total * 0.40;
+                gananciaTT = total * 0.60;
+                percMH = '40%';
+                percTT = '60%';
+            }
+
+            // 3. Modificación directa del DOM (Sin estado, directo al HTML)
+            document.getElementById('res-total').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('res-mh').innerText = `$${gananciaMH.toFixed(2)}`;
+            document.getElementById('res-tt').innerText = `$${gananciaTT.toFixed(2)}`;
+            document.getElementById('porcentaje-mh').innerText = percMH;
+            document.getElementById('porcentaje-tt').innerText = percTT;
+
+            // Mostrar el panel
+            panelResultados.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
