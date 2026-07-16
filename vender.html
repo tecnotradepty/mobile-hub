@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="color-scheme" content="light only">
+    <meta name="theme-color" content="#f5f5f7">
+    
+    <title>TecnoTrade | Vender y Trade-In</title>
+    
+    <script>
+        const savedTheme = localStorage.getItem('tecnotrade-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/vender.css">
+</head>
+<body>
 
+    <div class="page-loader-overlay" id="globalPageLoader"></div>
+    <div class="ambient-canvas">
+        <div class="liquid-orb orb-sapphire"></div>
+        <div class="liquid-orb orb-cyan"></div>
+    </div>
+    <div class="ps5-wheel-canvas" id="ps5Wheel"></div>
+
+    <div class="app-layout-container">
+        
+        <header class="mac-navbar">
+            <a href="index.html" class="navbar-action-btn core-spa-link" aria-label="Volver">
+                <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            </a>
+            <a href="index.html" class="navbar-brand-block core-spa-link">
+                <img src="https://raw.githubusercontent.com/j0elsito/j0elsito.github.io/579a1a6e8e73522cf6233557c309824623807b9e/tecnotrade/perfiltecnotrade.png" class="brand-avatar" alt="Logo">
+                <h1 class="brand-title">Tecno<span>Trade</span></h1>
+            </a>
+            <button class="navbar-action-btn" aria-label="Menú">
+                <svg viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            </button>
+        </header>
+
+        <div class="catalog-header">
+            <h2 class="catalog-main-title">Vender o Trade-In</h2>
+            <p class="catalog-sub-title">Cotiza tu equipo al instante. Recibe efectivo rápido o úsalo como abono para actualizarte a un modelo más reciente.</p>
+        </div>
+
+        <main class="repair-matrix-grid">
+
+            <a href="https://wa.me/50767966691?text=Hola!%20Me%20gustaría%20cotizar%20la%20venta%20o%20trade-in%20de%20mi%20iPhone." target="_blank" class="matrix-glass-card">
+                <div class="vector-illustration-box">
+                    <svg class="hifi-svg-icon" viewBox="0 0 24 24">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                </div>
+                <h2 class="card-main-title">Vender mi iPhone</h2>
+                <p class="card-desc">Compramos modelos desde el iPhone 11 en adelante. Evaluación justa basada en el estado de batería y estética.</p>
+                <span class="action-label">Cotizar mi iPhone</span>
+            </a>
+
+            <a href="https://wa.me/50767966691?text=Hola!%20Me%20gustaría%20cotizar%20la%20venta%20o%20trade-in%20de%20mi%20iPad." target="_blank" class="matrix-glass-card">
+                <div class="vector-illustration-box">
+                    <svg class="hifi-svg-icon" viewBox="0 0 24 24">
+                        <rect x="4" y="3" width="16" height="18" rx="2" ry="2"></rect>
+                        <line x1="12" y1="19" x2="12.01" y2="19"></line>
+                    </svg>
+                </div>
+                <h2 class="card-main-title">Vender mi iPad</h2>
+                <p class="card-desc">Cotizamos toda la línea de iPad, iPad Air y iPad Pro. Debe estar libre de iCloud y cuenta activa.</p>
+                <span class="action-label">Cotizar mi iPad</span>
+            </a>
+
+            <a href="https://wa.me/50767966691?text=Hola!%20Me%20gustaría%20cotizar%20la%20venta%20o%20trade-in%20de%20mi%20Laptop/Mac." target="_blank" class="matrix-glass-card">
+                <div class="vector-illustration-box">
+                    <svg class="hifi-svg-icon" viewBox="0 0 24 24">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="2" y1="20" x2="22" y2="20"></line>
+                        <line x1="12" y1="17" x2="12" y2="20"></line>
+                    </svg>
+                </div>
+                <h2 class="card-main-title">Vender mi Laptop o Mac</h2>
+                <p class="card-desc">Aceptamos MacBook Air, Pro y laptops seleccionadas. Indícanos el procesador, memoria RAM y almacenamiento.</p>
+                <span class="action-label">Cotizar mi Equipo</span>
+            </a>
+
+            <a href="https://wa.me/50767966691?text=Hola!%20Me%20gustaría%20cotizar%20la%20venta%20o%20trade-in%20de%20mi%20Android." target="_blank" class="matrix-glass-card">
+                <div class="vector-illustration-box">
+                    <svg class="hifi-svg-icon" viewBox="0 0 24 24">
+                        <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                        <circle cx="12" cy="12" r="2"></circle>
+                        <line x1="6" y1="12" x2="6.01" y2="12"></line>
+                        <line x1="18" y1="12" x2="18.01" y2="12"></line>
+                    </svg>
+                </div>
+                <h2 class="card-main-title">Vender dispositivo Android</h2>
+                <p class="card-desc">Aceptamos las series Samsung Galaxy S y Z, dispositivos Google Pixel y Xiaomi de gama alta.</p>
+                <span class="action-label">Cotizar mi Android</span>
+            </a>
+
+        </main>
+
+        <section class="info-module-section">
+            <h3 class="module-section-header">¿Cómo funciona el proceso?</h3>
+            <div class="steps-container">
+                <div class="step-row">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <h4>Describe tu equipo</h4>
+                        <p>Escríbenos a WhatsApp indicando el modelo exacto, capacidad, condición de la batería y si posee detalles estéticos o reparaciones previas.</p>
+                    </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <h4>Recibe un estimado</h4>
+                        <p>Basado en tu descripción, te daremos un rango de precio estimado o la diferencia a pagar si deseas aplicar el programa de Trade-In.</p>
+                    </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <h4>Revisión y Pago seguro</h4>
+                        <p>Trae el equipo a nuestro local para una evaluación física de 15 minutos. Si todo está correcto, realizamos la compra de inmediato mediante transferencia o efectivo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div> 
+
+    <nav class="interfacial-dock-nav">
+        <a href="index.html" class="dock-action-tab core-spa-link">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span class="dock-label-text">Inicio</span>
+        </a>
+        <a href="catalogo.html" class="dock-action-tab core-spa-link">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+            <span class="dock-label-text">Catálogo</span>
+        </a>
+        <a href="reparar.html" class="dock-action-tab core-spa-link">
+            <svg viewBox="0 0 24 24"><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span class="dock-label-text">Servicio</span>
+        </a>
+        <a href="#" class="dock-action-tab">
+            <div class="dock-cart-indicator">2</div>
+            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            <span class="dock-label-text">Carrito</span>
+        </a>
+    </nav>
+
+    <script src="js/core.js"></script>
+    <script src="js/vender.js"></script>
+</body>
+</html>
