@@ -1,0 +1,117 @@
+/* ==========================================================================
+   1. CORE VARIABLES & THEME (TECNOTRADE)
+   ========================================================================== */
+:root {
+    --bg-base: #f5f5f7;
+    --text-primary: #1d1d1f;
+    --text-secondary: #86868b;
+    --apple-blue: #0071e3;
+    --apple-blue-hover: #0077ed;
+    --apple-blue-glow: rgba(0, 113, 227, 0.15);
+    --card-glass: rgba(255, 255, 255, 0.75);
+    --card-glass-pure: #ffffff;
+    --border-subtle: rgba(0, 0, 0, 0.06);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
+}
+
+[data-theme="dark"] {
+    --bg-base: #000000;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --apple-blue: #2997ff;
+    --apple-blue-hover: #147ce5;
+    --apple-blue-glow: rgba(41, 151, 255, 0.2);
+    --card-glass: rgba(28, 28, 30, 0.75);
+    --card-glass-pure: #1c1c1e;
+    --border-subtle: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   2. RESET & GLOBAL ARCHITECTURE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+    margin: 0; padding: 0; width: 100%; min-height: 100%;
+    background-color: var(--bg-base) !important; color: var(--text-primary) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden; overflow-y: auto;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.app-layout-container { 
+    width: 100%; max-width: 480px; margin: 0 auto; padding-bottom: 150px; position: relative; z-index: 10; 
+}
+
+/* ==========================================================================
+   3. FONDOS & LOADER (AURORAS)
+   ========================================================================== */
+.page-loader-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-base); 
+    z-index: 99999; transition: background-color 0.5s ease; pointer-events: none; opacity: 1;
+    animation: forceFadeOut 0.6s 0.1s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes forceFadeOut { to { opacity: 0; visibility: hidden; } }
+
+.ambient-canvas {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;
+    background-color: var(--bg-base); overflow: hidden; pointer-events: none; transition: background-color 0.4s ease;
+}
+.liquid-orb { position: absolute; border-radius: 50%; opacity: 0.8; will-change: transform; animation: moveOrb 25s infinite alternate ease-in-out; }
+.orb-sapphire { width: 55vw; height: 55vw; background: radial-gradient(circle, rgba(0, 113, 227, 0.12) 0%, rgba(0, 113, 227, 0) 70%); top: -10%; left: -10%; }
+.orb-cyan     { width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(0, 198, 214, 0.08) 0%, rgba(0, 198, 214, 0) 70%); bottom: -20%; right: -10%; animation-delay: -5s; }
+.orb-amethyst { width: 48vw; height: 48vw; background: radial-gradient(circle, rgba(189, 0, 255, 0.05) 0%, rgba(189, 0, 255, 0) 70%); top: 35%; left: 25%; animation-delay: -12s; animation-duration: 32s; }
+@keyframes moveOrb { 0% { transform: translate3d(0, 0, 0) scale(1); } 100% { transform: translate3d(5vw, 5vh, 0) scale(1.1); } }
+
+.ps5-wheel-canvas {
+    position: fixed; top: 50%; left: 50%; width: 100vw; height: 100vh; 
+    background: url('file_0000000098dc71f5b7616aa89d7b3b66.png') center center no-repeat;
+    background-size: cover; z-index: 2; pointer-events: none; transform: translate3d(-50%, -50%, 0);
+    will-change: filter; opacity: 0.65; mix-blend-mode: multiply; filter: blur(var(--scroll-blur, 0px));
+}
+[data-theme="dark"] .ps5-wheel-canvas { opacity: 0.25; filter: invert(1) brightness(0.8) contrast(1.2) saturate(1.1) blur(var(--scroll-blur, 0px)); mix-blend-mode: screen; }
+
+/* ==========================================================================
+   4. NAVBAR Y DOCK GLOBAL
+   ========================================================================== */
+.mac-navbar {
+    display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; position: sticky; top: 0; z-index: 100;
+    background: linear-gradient(to bottom, var(--bg-base) 0%, rgba(245,245,247,0) 100%);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: background 0.4s ease;
+}
+.navbar-action-btn { background: transparent; border: none; cursor: pointer; color: var(--text-primary); transition: transform 0.2s, color 0.4s ease; display: flex; align-items: center; justify-content: center; }
+.navbar-action-btn:active { transform: scale(0.85); }
+.navbar-action-btn svg { width: 24px; height: 24px; fill: currentColor; }
+.navbar-brand-block { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-avatar { width: 34px; height: 34px; border-radius: 9px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-subtle); }
+.brand-title { font-size: 20px; font-weight: 800; margin: 0; color: var(--text-primary); letter-spacing: -0.5px; transition: color 0.4s ease; }
+.brand-title span { color: var(--apple-blue); font-weight: 900; }
+
+.interfacial-dock-nav {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 420px;
+    background: var(--card-glass); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--border-subtle); border-radius: 36px;
+    display: flex; justify-content: space-around; padding: 12px 10px; z-index: 10000;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    animation: slideDockUp 0.7s 0.6s forwards cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+@keyframes slideDockUp { from { transform: translate3d(-50%, 120%, 0); } to { transform: translate3d(-50%, 0, 0); } }
+
+.dock-action-tab { display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none; color: var(--text-secondary); position: relative; transition: var(--transition-smooth); }
+.dock-action-tab.tab-active { color: var(--apple-blue); transform: translateY(-4px); }
+.dock-action-tab svg { width: 23px; height: 23px; fill: currentColor; transition: var(--transition-fast); }
+.dock-action-tab:active svg { transform: scale(0.85); }
+.dock-label-text { font-size: 10px; font-weight: 700; }
+
+/* ADAPTACIÓN A PC GLOBAL */
+@media (min-width: 768px) {
+    .app-layout-container { max-width: 1120px; padding-top: 40px; padding-bottom: 16px; margin: 0 auto; }
+    .mac-navbar { border-radius: 24px; margin: 0 24px 36px 24px; top: 24px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm); }
+    .interfacial-dock-nav { max-width: 480px; padding: 14px 24px; border-radius: 40px; bottom: 32px; }
+}
